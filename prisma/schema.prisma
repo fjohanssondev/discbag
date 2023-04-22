@@ -25,16 +25,21 @@ model Bag {
 }
 
 model Disc {
-    id          String   @id @default(cuid())
-    name        String
-    description String?
-    image       String?
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId      String?
-    Bag         Bag?     @relation(fields: [bagId], references: [id])
-    bagId       String?
+    id           String   @id @default(cuid())
+    name         String
+    description  String?
+    image        String?
+    speed        Int?
+    glide        Int?
+    turn         Int?
+    fade         Int?
+    manufacturer String?
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId       String?
+    Bag          Bag?     @relation(fields: [bagId], references: [id])
+    bagId        String?
 
     @@index([userId])
     @@index([bagId])
