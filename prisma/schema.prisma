@@ -24,16 +24,24 @@ model Bag {
     @@index([userId])
 }
 
+enum DiscType {
+    PUTTER
+    MIDRANGE
+    FAIRWAY_DRIVER
+    DISTANCE_DRIVER
+}
+
 model Disc {
     id           String   @id @default(cuid())
     name         String
     description  String?
     image        String?
-    speed        Int?
-    glide        Int?
-    turn         Int?
-    fade         Int?
-    manufacturer String?
+    speed        Int
+    glide        Int
+    turn         Int
+    fade         Int
+    manufacturer String
+    type         DiscType @default(PUTTER)
     createdAt    DateTime @default(now())
     updatedAt    DateTime @updatedAt
     user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
