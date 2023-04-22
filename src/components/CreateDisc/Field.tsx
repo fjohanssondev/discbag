@@ -10,7 +10,7 @@ interface IField {
 
 const Field: React.FC<IField> = ({ name, multine = false, type = 'text' }) => {
   return (
-    <HouseForm name={name} initialValue={""} onSubmitValidate={type === 'text' ? z.string().min(1, 'You need to atleast type one character') : z.preprocess(Number, z.number().min(0).max(15))}>
+    <HouseForm name={name} initialValue={""} onSubmitValidate={type === 'text' ? z.string().min(1, 'You need to atleast type one character') : z.preprocess(Number, z.number())}>
       {({ value, setValue, onBlur, errors }) => (
         <div className="flex flex-col">
           <label className="text-sm mt-6" htmlFor={name}>{name.charAt(0).toUpperCase() + name.slice(1)}</label>

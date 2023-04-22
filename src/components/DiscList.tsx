@@ -1,6 +1,17 @@
 import { api } from "~/utils/api";
 import DiscView from "./DiscView";
 
+interface IDiscView {
+  name: string
+  id: string
+  manufacturer: string
+  type: string
+  speed: number
+  fade: number
+  turn: number
+  glide: number
+}
+
 const DiscList = () => {
 
   const { data: discs } = api.disc.all.useQuery();
@@ -10,7 +21,7 @@ const DiscList = () => {
       <div className="md:container md:mx-auto">
         <div className="grid grid-cols-6 gap-6">
           {discs?.map(disc => (
-            <DiscView key={disc.id} name={disc.name} id={disc.id} description={disc.description} />
+            <DiscView key={disc.id} {...disc as IDiscView} />
           ))}
         </div>
       </div>
