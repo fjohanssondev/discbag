@@ -31,8 +31,8 @@ model Disc {
     image       String?
     createdAt   DateTime @default(now())
     updatedAt   DateTime @updatedAt
-    user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-    userId      String
+    user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId      String?
     Bag         Bag?     @relation(fields: [bagId], references: [id])
     bagId       String?
 
