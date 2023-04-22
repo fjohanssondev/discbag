@@ -9,7 +9,7 @@ import { api } from "~/utils/api";
 const Home: NextPage = () => {
 
   const { data: session } = useSession();
-  const { data: bagCount } = api.bag.numberOfBags.useQuery()
+  const { data: bagCount = 0 } = api.bag.numberOfBags.useQuery()
   const { data: isUserAdmin } = api.user.isUserAdmin.useQuery()
 
   return (
