@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <div className="flex flex-col md:flex-row justify-between mt-12">
           <h1 className="text-4xl font-semibold">Welcome {session?.user.name}</h1>
           <div className="flex mt-6 md:mt-0 gap-4">
-            <Link href="/bag" className="flex justify-center items-center bg-indigo-500 hover:bg-indigo-400 text-sm text-indigo-50 px-4 py-2 rounded">View bag ({bagCount})</Link>
+            {session && <Link href="/bag" className="flex justify-center items-center bg-indigo-500 hover:bg-indigo-400 text-sm text-indigo-50 px-4 py-2 rounded">View bags ({bagCount})</Link>}
             {isUserAdmin?.role === 'ADMIN' && <Link href="/discs/create" className="flex justify-center items-center bg-emerald-500 hover:bg-emerald-400 text-sm text-emerald-50 px-4 py-2 rounded">Create disc</Link>}
           </div>
         </div>
