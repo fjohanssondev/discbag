@@ -20,9 +20,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <div className="md:container md:mx-auto px-4">
-        <div className="flex justify-between mt-12">
+        <div className="flex flex-col md:flex-row justify-between mt-12">
           <h1 className="text-4xl font-semibold">Welcome {session?.user.name}</h1>
-          <div className="flex gap-4">
+          <div className="flex mt-6 md:mt-0 gap-4">
             <Link href="/bag" className="flex justify-center items-center bg-indigo-500 hover:bg-indigo-400 text-sm text-indigo-50 px-4 py-2 rounded">View bag ({bagCount})</Link>
             {isUserAdmin?.role === 'ADMIN' && <Link href="/discs/create" className="flex justify-center items-center bg-emerald-500 hover:bg-emerald-400 text-sm text-emerald-50 px-4 py-2 rounded">Create disc</Link>}
           </div>
