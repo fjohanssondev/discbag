@@ -21,9 +21,9 @@ const DiscView: React.FC<IDiscView> = ({ name, id, manufacturer, type, speed, fa
         <h4 className='text-xs text-slate-400 italic'>{discType(type)}</h4>
         <div className='flex mt-4'>
           <span className='text-sm text-slate-400 italic'>{speed}&nbsp;|&nbsp;</span>
-          <span className='text-sm text-slate-400 italic'>{fade}&nbsp;|&nbsp;</span>
-          <span className='text-sm text-slate-400 italic'>{turn}&nbsp;|&nbsp;</span>
           <span className='text-sm text-slate-400 italic'>{glide}&nbsp;|&nbsp;</span>
+          <span className='text-sm text-slate-400 italic'>{turn}&nbsp;|&nbsp;</span>
+          <span className='text-sm text-slate-400 italic'>{fade}&nbsp;|&nbsp;</span>
         </div>
       </article>
     </Link>

@@ -5,7 +5,6 @@ interface IField {
   name: string;
   type?: string;
   multine?: boolean;
-  errorMessage?: string;
 }
 
 const Field: React.FC<IField> = ({ name, multine = false, type = 'text' }) => {

@@ -19,7 +19,7 @@ const DiscList = () => {
   return (
     <section className="mt-8">
       <div className="md:container md:mx-auto">
-        <div className="grid grid-cols-6 gap-6">
+        <div className="grid grid-cols-4 gap-6">
           {discs?.map(disc => (
             <DiscView key={disc.id} {...disc as IDiscView} />
           ))}

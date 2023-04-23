@@ -1,4 +1,4 @@
-import { Form } from "houseform"
+import { Form, Field as HouseField } from "houseform"
 import { useRouter } from "next/router";
 import Field from "~/components/CreateDisc/Field";
 import { api } from "~/utils/api";
@@ -7,6 +7,7 @@ interface FormValues {
   name: string
   description: string
   manufacturer: string
+  type: "PUTTER" | "MIDRANGE" | "FAIRWAY_DRIVER" | "DISTANCE_DRIVER"
   speed: number
   glide: number
   turn: number
@@ -23,6 +24,7 @@ const CreateDisc = () => {
       name: values.name,
       description: values.description,
       manufacturer: values.manufacturer,
+      type: values.type,
       speed: Number(values.speed),
       glide: Number(values.glide),
       turn: Number(values.turn),
@@ -45,6 +47,31 @@ const CreateDisc = () => {
                 <Field name="name" />
                 <Field multine={true} name="description" />
                 <Field name="manufacturer" />
+                <HouseField
+                  name="type"
+                  initialValue={"Putter"}
+                >
+                  {({ value, setValue, onBlur, errors }) => (
+                    <>
+                      <label className="text-sm mt-6" htmlFor="select">Type</label>
+                      <select
+                        className="border border-gray-300 rounded-sm text-sm text-slate-800 px-4 py-2 mt-2 mb-2"
+                        value={value}
+                        id="select"
+                        onChange={(e) => setValue(e.target.value)}
+                        onBlur={onBlur}
+                      >
+                        <option value="PUTTER">Putter</option>
+                        <option value="MIDRANGE">Midrange</option>
+                        <option value="FAIRWAY_DRIVER">Fairway Driver</option>
+                        <option value="DISTANCE_DRIVER">Distance Driver</option>
+                      </select>
+                      {errors.map((error) => (
+                        <p key={error}>{error}</p>
+                      ))}
+                    </>
+                  )}
+                </HouseField>
                 <div className="flex flex-wrap gap-4">
                   <Field name="speed" type="number" />
                   <Field name="glide" type="number" />

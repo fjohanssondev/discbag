@@ -6,6 +6,8 @@ import {
   protectedProcedure,
 } from "~/server/api/trpc";
 
+const DiscType = ["PUTTER", "MIDRANGE", "FAIRWAY_DRIVER", "DISTANCE_DRIVER"] as const;
+
 export const discRouter = createTRPCRouter({
   all: publicProcedure
     .query(({ ctx }) => {
@@ -23,13 +25,14 @@ export const discRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(z.object({ name: z.string(), description: z.string(), manufacturer: z.string(), speed: z.number(), glide: z.number(), turn: z.number(), fade: z.number() }))
+    .input(z.object({ name: z.string(), description: z.string(), manufacturer: z.string(), type: z.enum(DiscType), speed: z.number(), glide: z.number(), turn: z.number(), fade: z.number() }))
     .mutation(({ input, ctx }) => {
       return ctx.prisma.disc.create({
         data: {
           name: input.name,
           description: input.description,
           manufacturer: input.manufacturer,
+          type: input.type,
           speed: input.speed,
           glide: input.glide,
           turn: input.turn,
