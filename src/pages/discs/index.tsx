@@ -4,8 +4,12 @@ const Discs = () => {
 
   return (
     <div>
-      <h1 className="text-4xl">Discs</h1>
-      <DiscList />
+      <div className="md:container md:mx-auto px-4 flex justify-between items-center">
+        <div className="flex flex-col mt-12">
+          <h1 className="text-4xl font-semibold">Discs</h1>
+          <DiscList />
+        </div>
+      </div>
     </div>
   )
 }
