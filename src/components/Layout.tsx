@@ -16,17 +16,17 @@ const Layout = ({ children, font }: { children: React.ReactNode, font: string}) 
         <div className="md:container md:mx-auto px-4 flex justify-between items-center">
           <Link href="/" className={`${font} text-2xl font-bold`}>Discbag</Link>
           <nav className={font}>
-            <ul className="flex gap-8">
+            <ul className="flex gap-2">
               <li>
-                <Link href="/" className="text-sm font-semibold">Home</Link>
+                <Link href="/" className="text-sm md:py-5 md:px-4 md:hover:border-b-4 md:hover:border-black font-semibold">Home</Link>
               </li>
               {session && (
                 <li>
-                  <Link href="/bag" className="text-sm font-semibold">My bag</Link>
+                  <Link href="/bags" className="text-sm md:py-5 md:px-4 md:hover:border-b-4 md:hover:border-black font-semibold">My bags</Link>
                 </li>
               )}
               <li>
-                <Link href="/discs" className="text-sm font-semibold">All Discs</Link>
+                <Link href="/discs" className="text-sm md:py-5 md:px-4 md:hover:border-b-4 md:hover:border-black font-semibold">All Discs</Link>
               </li>
             </ul>
           </nav>
