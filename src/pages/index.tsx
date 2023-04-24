@@ -2,9 +2,9 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
-import DiscList from "~/components/DiscList";
 
 import { api } from "~/utils/api";
+import MyBagList from "~/components/Bags/MyBagList";
 
 const Home: NextPage = () => {
 
@@ -27,7 +27,10 @@ const Home: NextPage = () => {
             {isUserAdmin?.role === 'ADMIN' && <Link href="/discs/create" className="flex justify-center items-center bg-emerald-500 hover:bg-emerald-400 text-sm text-emerald-50 px-4 py-2 rounded">Create disc</Link>}
           </div>
         </div>
-        <DiscList />
+        <section className="flex flex-col mt-12">
+          <h2 className="text-2xl font-semibold">My active bags</h2>
+          <MyBagList />
+        </section>
         </div>
     </>
   );
