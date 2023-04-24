@@ -7,12 +7,16 @@ import {
 } from "~/server/api/trpc";
 
 export const bagRouter = createTRPCRouter({
-  getAllMyBags: protectedProcedure
+  getAllMyActiveBags: protectedProcedure
     .query(({ ctx }) => {
       return ctx.prisma.bag.findMany({
         where: {
-          userId: ctx.session.user.id
+          userId: ctx.session.user.id,
+          active: true,
         },
+        include: {
+          discs: true
+        }
       });
     }),
 
@@ -24,6 +28,4 @@ export const bagRouter = createTRPCRouter({
         }
       })
     }),
-
-  
 });
