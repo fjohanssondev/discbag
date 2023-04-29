@@ -1,10 +1,11 @@
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router"
-import { useState } from "react"
 import { Field, Form } from "houseform";
 
 import Modal from "~/components/Modal"
 import { api } from "~/utils/api"
 import { discType } from "utils/discType";
+import Toast from "~/components/Toast";
 
 const DiscPage = () => {
 
@@ -19,18 +20,25 @@ const DiscPage = () => {
 
   const { mutate } = api.bag.addDiscToBag.useMutation()
 
-  const addToBag = async (bagId: string) => {
-    mutate({
-      bagId: bagId,
-      discId: id as string
-    })
+  const [showToast, setShowToast] = useState(false)
 
-    await router.push(`/bags/${bagId}`)
+  const addToBag = (bagId: string) => {
+    try {
+
+      mutate({
+        bagId: bagId,
+        discId: id as string
+      })
+      
+      setShowToast(prev => !prev)
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
     <section>
-      <div className="md:container md:mx-auto px-4 mt-12">
+        {showToast && <Toast title="Success!" disc={disc?.name} description="was added to your bag"/>}
         <div className="flex justify-between">
           <div className="flex flex-col">
             <h1 className="text-4xl font-bold">{disc?.name}</h1>
@@ -88,7 +96,6 @@ const DiscPage = () => {
             </Modal>
           </div>
           </div>
-      </div>
     </section>
   )
 }
