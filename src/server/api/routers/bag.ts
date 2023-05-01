@@ -2,7 +2,6 @@ import { z } from "zod";
 
 import {
   createTRPCRouter,
-  publicProcedure,
   protectedProcedure,
 } from "~/server/api/trpc";
 
@@ -25,6 +24,9 @@ export const bagRouter = createTRPCRouter({
       return ctx.prisma.bag.findMany({
         where: {
           userId: ctx.session.user.id,
+        },
+        include: {
+          discs: true
         }
       });
     }),
@@ -54,4 +56,20 @@ export const bagRouter = createTRPCRouter({
         }
       })
     }),
+
+  create: protectedProcedure
+    .input(z.object({ name: z.string() }))
+    .mutation(({ ctx, input }) => {
+      return ctx.prisma.bag.create({
+        data: {
+          name: input.name,
+          user: {
+            connect: {
+              id: ctx.session.user.id,
+            },
+          },
+        },
+      });
+    }
+    ),
 });
