@@ -1,13 +1,11 @@
-import { api } from "~/utils/api";
-import Bag from "./Bag";
+import type { IBag } from "types/types"
+import Bag from "./Bag"
 
-const MyBagList = () => {
-
-  const { data: bags } = api.bag.getAllMyActiveBags.useQuery()
+const MyBagList: React.FC<{ bags: IBag[] }> = ({ bags }) => {
 
   return (
     <div>
-      {bags?.map((bag) => (
+      {bags.map((bag) => (
         <Bag key={bag.id} {...bag} />
       ))}
     </div>

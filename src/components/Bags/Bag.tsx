@@ -1,14 +1,7 @@
+import type { IBag } from "types/types";
 import DiscItem from "./DiscItem";
-import type { DiscProps } from "./DiscItem";
 
-interface Bag {
-  name: string;
-  createdAt: Date;
-  discs: DiscProps[];
-  updatedAt: Date;
-}
-
-const Bag: React.FC<Bag> = ({ name, createdAt, updatedAt, discs }) => {
+const Bag: React.FC<IBag> = ({ name, createdAt, updatedAt, discs }) => {
 
   return (
     <div className="mt-8">
