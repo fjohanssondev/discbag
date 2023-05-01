@@ -7,12 +7,29 @@ import {
 
 export const userRouter = createTRPCRouter({
 
+  all: protectedProcedure
+    .query(({ ctx }) => {
+      return ctx.prisma.user.findMany({
+        where: {
+          id: {
+            not: ctx.session.user.id
+          }
+        },
+        select: {
+          id: true,
+          name: true,
+          image: true,
+          bags: true
+        },
+      })
+    }),
+
   getById: protectedProcedure
-    .input(z.string())
+    .input(z.object({ id: z.string() }))
     .query(({ ctx, input }) => {
       return ctx.prisma.user.findFirst({
         where: {
-          id: input
+          id: input.id
         }
       })
     }),
