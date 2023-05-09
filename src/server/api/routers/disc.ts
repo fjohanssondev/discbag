@@ -50,13 +50,14 @@ export const discRouter = createTRPCRouter({
     }),
 
   create: protectedProcedure
-    .input(z.object({ name: z.string(), description: z.optional(z.string()), manufacturer: z.string(), image: z.optional(z.string()), stability: z.string(), type: z.enum(DiscType), speed: z.number(), glide: z.number(), turn: z.number(), fade: z.number() }))
+    .input(z.object({ name: z.string(), description: z.optional(z.string()), manufacturer: z.string(), mold: z.optional(z.string()), image: z.optional(z.string()), stability: z.string(), type: z.enum(DiscType), speed: z.number(), glide: z.number(), turn: z.number(), fade: z.number() }))
     .mutation(({ input, ctx }) => {
       return ctx.prisma.disc.create({
         data: {
           name: input.name,
           description: input.description,
           manufacturer: input.manufacturer,
+          mold: input.mold,
           image: input.image,
           type: input.type,
           speed: input.speed,

@@ -29,7 +29,7 @@ const Layout = ({ children, font }: { children: React.ReactNode, font: string}) 
                 <Link href="/discs" className="text-sm md:py-5 md:px-4 md:hover:border-b-4 md:hover:border-black font-semibold">All Discs</Link>
               </li>
               <li>
-                <Link href="/discs" className="text-sm md:py-5 md:px-4 md:hover:border-b-4 md:hover:border-black font-semibold">Most popular discs</Link>
+                <Link href="/discs/popular" className="text-sm md:py-5 md:px-4 md:hover:border-b-4 md:hover:border-black font-semibold">Most popular discs</Link>
               </li>
               <li>
                 <Link href="/players" className="text-sm md:py-5 md:px-4 md:hover:border-b-4 md:hover:border-black font-semibold">Players</Link>

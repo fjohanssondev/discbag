@@ -1,4 +1,4 @@
-import { api } from "~/utils/api";
+import type { IDisc } from "types/types";
 import DiscView from "./DiscView";
 
 interface IDiscView {
@@ -12,9 +12,7 @@ interface IDiscView {
   glide: number
 }
 
-const DiscList = () => {
-
-  const { data: discs } = api.disc.all.useQuery();
+const DiscList = ({ discs }: { discs: IDisc[] }) => {
 
   return (
     <section className="mt-8">

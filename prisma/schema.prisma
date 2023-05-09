@@ -37,11 +37,12 @@ model Disc {
     name         String
     description  String?
     image        String?
-    speed        Int
-    glide        Int
-    turn         Int
-    fade         Int
+    speed        Float
+    glide        Float
+    turn         Float
+    fade         Float
     manufacturer String
+    mold         String?
     stability    String?
     type         DiscType     @default(PUTTER)
     createdAt    DateTime     @default(now())

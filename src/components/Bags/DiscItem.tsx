@@ -1,5 +1,6 @@
 import React from 'react'
 import { discType } from 'utils/discType';
+import { formatManufacturer } from 'utils/manufacturerType';
 
 export interface DiscProps {
   id: string;
@@ -26,7 +27,7 @@ const DiscItem: React.FC<DiscProps> = ({ name, speed, glide, turn, fade, manufac
       </div>
       <div className='ml-auto'>
         <ul className='flex items-center gap-2'>
-          <li className='text-sm'>{manufacturer}</li>
+          <li className='text-sm'>{formatManufacturer(manufacturer)}</li>
           <li className='text-sm'>{discType(type)}</li>
         </ul>
       </div>

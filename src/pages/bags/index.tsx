@@ -8,7 +8,7 @@ const Bags = () => {
   return (
     <section className='flex flex-col min-h-screen'>
       <h1 className='text-4xl font-semibold'>My bags</h1>
-      {bags?.length > 0 ? (
+      {bags && bags.length > 0 ? (
         <MyBagList bags={bags} />
       ) : (
         <div className='flex justify-center self-center'>
